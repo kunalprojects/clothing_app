@@ -1,0 +1,250 @@
+import { Product } from './store'
+
+// Demo product data with placeholder images from Unsplash - T-SHIRTS ONLY
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Oversized Graphic Tee',
+    price: 1299,
+    originalPrice: 1999,
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Black', 'White', 'Navy'],
+    inStock: true,
+    isNew: true,
+    isBestSeller: true,
+    rating: 4.8,
+    reviews: 156
+  },
+  {
+    id: '2',
+    name: 'Classic Crew Neck Tee',
+    price: 899,
+    originalPrice: 1499,
+    image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['White', 'Black', 'Grey'],
+    inStock: true,
+    isBestSeller: true,
+    rating: 4.7,
+    reviews: 203
+  },
+  {
+    id: '3',
+    name: 'Vintage Band Tee',
+    price: 1499,
+    image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Black', 'Charcoal'],
+    inStock: true,
+    isNew: true,
+    rating: 4.9,
+    reviews: 142
+  },
+  {
+    id: '4',
+    name: 'Striped Rugby Tee',
+    price: 1799,
+    originalPrice: 2299,
+    image: 'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Navy-White', 'Red-White', 'Green-White'],
+    inStock: true,
+    rating: 4.6,
+    reviews: 89
+  },
+  {
+    id: '5',
+    name: 'Pocket Tee - Essential',
+    price: 999,
+    image: 'https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Olive', 'Navy', 'Black', 'White'],
+    inStock: true,
+    isBestSeller: true,
+    rating: 4.8,
+    reviews: 267
+  },
+  {
+    id: '6',
+    name: 'Oversized Drop Shoulder Tee',
+    price: 1399,
+    originalPrice: 1899,
+    image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Beige', 'Sage', 'Dusty Pink'],
+    inStock: true,
+    isNew: true,
+    rating: 4.9,
+    reviews: 178
+  },
+  {
+    id: '7',
+    name: 'Minimalist Logo Tee',
+    price: 1199,
+    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Black', 'White', 'Grey'],
+    inStock: true,
+    rating: 4.7,
+    reviews: 134
+  },
+  {
+    id: '8',
+    name: 'Tie Dye Oversized Tee',
+    price: 1599,
+    originalPrice: 2199,
+    image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Multi', 'Purple Mix', 'Blue Mix'],
+    inStock: true,
+    lowStock: true,
+    isNew: true,
+    rating: 4.8,
+    reviews: 95
+  },
+  {
+    id: '9',
+    name: 'V-Neck Basic Tee',
+    price: 799,
+    image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['White', 'Black', 'Navy', 'Grey'],
+    inStock: true,
+    isBestSeller: true,
+    rating: 4.6,
+    reviews: 312
+  },
+  {
+    id: '10',
+    name: 'Longline Curved Hem Tee',
+    price: 1299,
+    image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Black', 'White', 'Khaki'],
+    inStock: false,
+    rating: 4.7,
+    reviews: 156
+  },
+  {
+    id: '11',
+    name: 'Ringer Tee - Retro',
+    price: 1099,
+    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['White-Navy', 'White-Red', 'Grey-Black'],
+    inStock: true,
+    rating: 4.5,
+    reviews: 87
+  },
+  {
+    id: '12',
+    name: 'Heavyweight Box Tee',
+    price: 1699,
+    originalPrice: 2299,
+    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500&h=700&fit=crop',
+    category: 'T-Shirts',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Sand', 'Charcoal', 'Olive'],
+    inStock: true,
+    isNew: true,
+    lowStock: true,
+    rating: 4.9,
+    reviews: 124
+  }
+]
+
+export const collections = [
+  {
+    id: 'new-arrivals',
+    name: 'New Arrivals',
+    description: 'Fresh tees just dropped',
+    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop'
+  },
+  {
+    id: 'best-sellers',
+    name: 'Best Sellers',
+    description: 'Everyone\'s favorite tees',
+    image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop'
+  },
+  {
+    id: 'oversized',
+    name: 'Oversized Fit',
+    description: 'Relaxed & comfortable',
+    image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&h=600&fit=crop'
+  },
+  {
+    id: 'graphic',
+    name: 'Graphic Tees',
+    description: 'Bold designs & prints',
+    image: 'https://images.unsplash.com/photo-1525450824786-227cbef70703?w=800&h=600&fit=crop'
+  }
+]
+
+export const reviews = [
+  {
+    id: 1,
+    name: 'Priya S.',
+    rating: 5,
+    comment: 'Obsessed with the quality! The fit is perfect and the fabric feels premium.',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
+    verified: true,
+    productImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop'
+  },
+  {
+    id: 2,
+    name: 'Arjun M.',
+    rating: 5,
+    comment: 'Finally found clothes that match my vibe. The oversized fit is *chef\'s kiss*',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
+    verified: true,
+    productImage: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=200&h=200&fit=crop'
+  },
+  {
+    id: 3,
+    name: 'Zara K.',
+    rating: 5,
+    comment: 'Love the casual-cool aesthetic! Got so many compliments 💫',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
+    verified: true,
+    productImage: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=200&h=200&fit=crop'
+  }
+]
+
+export const faqs = [
+  {
+    question: 'What is your return policy?',
+    answer: 'We offer easy returns within 7 days of delivery. Items must be unworn with tags attached. Visit our Returns page to initiate a return request.'
+  },
+  {
+    question: 'How long does shipping take?',
+    answer: 'Orders are typically processed within 2-3 business days. Delivery takes 4-7 business days depending on your location in India.'
+  },
+  {
+    question: 'Do you offer Cash on Delivery?',
+    answer: 'Yes! COD is available on select orders. You can choose this option at checkout.'
+  },
+  {
+    question: 'How do I track my order?',
+    answer: 'Once your order ships, you\'ll receive an email with tracking details. You can also check your order status in My Account.'
+  },
+  {
+    question: 'What sizes do you offer?',
+    answer: 'We offer sizes from XS to XXL. Check our size chart on each product page for detailed measurements.'
+  },
+  {
+    question: 'Are the colors accurate to the photos?',
+    answer: 'We try our best to display accurate colors, but they may vary slightly due to screen settings. Check the product description for color details.'
+  }
+]
