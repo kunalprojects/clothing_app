@@ -15,7 +15,6 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
   const product = allProducts.find(p => p.id === resolvedParams.id)
 
   const [selectedSize, setSelectedSize] = useState<string>('')
-  const [selectedColor, setSelectedColor] = useState<string>('')
   const [showSizeChart, setShowSizeChart] = useState(false)
   const [quantity, setQuantity] = useState(1)
 
@@ -44,13 +43,8 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
       toast.error('Please select a size')
       return
     }
-    if (!selectedColor) {
-      toast.error('Please select a color')
-      return
-    }
-    
     for (let i = 0; i < quantity; i++) {
-      addToCart(product, selectedSize, selectedColor)
+      addToCart(product, selectedSize, 'One Size')
     }
     toast.success('Added to cart!')
   }
@@ -145,28 +139,6 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
             </div>
           )}
 
-          {/* Color Selection */}
-          <div className="mb-6">
-            <label className="block font-semibold mb-3">
-              Color: {selectedColor && <span className="font-normal text-gray-600">{selectedColor}</span>}
-            </label>
-            <div className="flex gap-2">
-              {product.colors.map((color) => (
-                <button
-                  key={color}
-                  onClick={() => setSelectedColor(color)}
-                  className={`px-4 py-2 border-2 rounded-md transition ${
-                    selectedColor === color
-                      ? 'border-black bg-black text-white'
-                      : 'border-gray-300 hover:border-gray-400'
-                  }`}
-                >
-                  {color}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Size Selection */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
@@ -181,24 +153,36 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => setSelectedSize(size)}
-                  className={`px-4 py-2 border-2 rounded-md transition ${
-                    selectedSize === size
-                      ? 'border-black bg-black text-white'
-                      : 'border-gray-300 hover:border-gray-400'
-                  }`}
-                >
-                  {size}
-                </button>
-              ))}
+              {['S','M','L','XL','XXL'].map((size) => {
+                const available = product.sizes.includes(size)
+                const selected  = selectedSize === size
+                return (
+                  <button
+                    key={size}
+                    onClick={() => available && setSelectedSize(size)}
+                    disabled={!available}
+                    className={`w-14 py-2 border-2 rounded-md text-sm font-semibold transition relative
+                      ${selected  ? 'border-black bg-black text-white' : ''}
+                      ${available && !selected ? 'border-gray-300 hover:border-black' : ''}
+                      ${!available ? 'border-gray-200 text-gray-300 cursor-not-allowed bg-gray-50' : ''}
+                    `}
+                  >
+                    {size}
+                    {/* Strike-through line for unavailable sizes */}
+                    {!available && (
+                      <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span className="w-full border-t border-gray-300 absolute" style={{transform:'rotate(-45deg)'}} />
+                      </span>
+                    )}
+                  </button>
+                )
+              })}
             </div>
+            <p className="text-xs text-gray-400 mt-2">Grayed out sizes are not available for this product.</p>
             {showSizeChart && (
               <div className="mt-4 p-4 bg-gray-50 rounded-md">
                 <p className="text-sm text-gray-600">
-                  Model is 5'8" and wearing size M. Check our detailed size guide for measurements.
+                  Model is 5&apos;8&quot; and wearing size M. Check our detailed size guide for measurements.
                 </p>
               </div>
             )}
@@ -228,10 +212,10 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
           <div className="space-y-3 mb-8">
             <button
               onClick={handleAddToCart}
-              disabled={!product.inStock}
+              disabled={!product.inStock || !selectedSize}
               className="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-800 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
-              {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+              {!product.inStock ? 'Out of Stock' : !selectedSize ? 'Select a Size' : 'Add to Cart'}
             </button>
             <div className="flex gap-3">
               <button

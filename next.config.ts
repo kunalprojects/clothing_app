@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
   images: {
@@ -9,6 +8,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+      },
+      {
+        // Supabase storage — covers all project buckets
+        protocol: 'https',
+        hostname: '*.supabase.co',
       },
     ],
   },

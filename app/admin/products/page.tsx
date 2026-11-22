@@ -313,6 +313,36 @@ function EditModal({ product, onClose, onSave }: { product: Product; onClose: ()
             </div>
           </div>
           <div>
+            <label className="block text-sm font-semibold mb-1">Available Sizes *</label>
+            <p className="text-xs text-gray-500 mb-2">Tick the sizes available for this product. Unticked sizes will appear grayed out to customers.</p>
+            <div className="flex gap-3 flex-wrap">
+              {['S','M','L','XL','XXL'].map(size => {
+                const checked = form.sizes.includes(size)
+                return (
+                  <label key={size} className={`flex flex-col items-center gap-1 cursor-pointer`}>
+                    <div className={`w-12 h-10 border-2 rounded-md flex items-center justify-center font-semibold text-sm transition
+                      ${checked ? 'border-black bg-black text-white' : 'border-gray-300 text-gray-400 bg-gray-50'}`}>
+                      {size}
+                    </div>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={e => {
+                        if (e.target.checked) {
+                          setForm(f => ({ ...f, sizes: [...f.sizes, size] }))
+                        } else {
+                          setForm(f => ({ ...f, sizes: f.sizes.filter(s => s !== size) }))
+                        }
+                      }}
+                      className="w-3 h-3"
+                    />
+                  </label>
+                )
+              })}
+            </div>
+          </div>
+
+          <div>
             <label className="block text-sm font-semibold mb-2">Collections</label>
             <div className="flex flex-col sm:flex-row gap-3">
               <label className={`flex items-center gap-2 p-3 border-2 rounded-lg cursor-pointer transition flex-1 ${form.isNew ? 'border-black bg-gray-50' : 'border-gray-200'}`}>
@@ -325,6 +355,7 @@ function EditModal({ product, onClose, onSave }: { product: Product; onClose: ()
               </label>
             </div>
           </div>
+
           <div className="flex gap-4 pt-2">
             <button onClick={() => onSave(form)} className="flex-1 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition font-semibold">Save Changes</button>
             <button onClick={onClose} className="flex-1 py-3 border border-black rounded-md hover:bg-gray-50 transition">Cancel</button>
@@ -471,6 +502,31 @@ function AddModal({ onClose, onAdd }: { onClose: () => void; onAdd: (p: Product)
             )}
           </div>
 
+          {/* Sizes */}
+          <div>
+            <label className="block text-sm font-semibold mb-1">Available Sizes *</label>
+            <p className="text-xs text-gray-500 mb-2">Select which sizes are available. Unselected sizes appear grayed out to customers.</p>
+            <div className="flex gap-3 flex-wrap">
+              {['S','M','L','XL','XXL'].map(size => {
+                const checked = form.sizes.includes(size)
+                return (
+                  <label key={size} className="flex flex-col items-center gap-1 cursor-pointer">
+                    <div className={`w-12 h-10 border-2 rounded-md flex items-center justify-center font-semibold text-sm transition ${checked ? 'border-black bg-black text-white' : 'border-gray-300 text-gray-400 bg-gray-50'}`}>
+                      {size}
+                    </div>
+                    <input type="checkbox" checked={checked} className="w-3 h-3"
+                      onChange={e => {
+                        if (e.target.checked) setForm(f => ({ ...f, sizes: [...f.sizes, size] }))
+                        else setForm(f => ({ ...f, sizes: f.sizes.filter(s => s !== size) }))
+                      }}
+                    />
+                  </label>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Collections */}
           <div>
             <label className="block text-sm font-semibold mb-1">Add to Collections</label>
             <p className="text-xs text-gray-500 mb-3">Product always appears in Shop All. Select collections below.</p>
@@ -499,6 +555,7 @@ function AddModal({ onClose, onAdd }: { onClose: () => void; onAdd: (p: Product)
             </button>
             <button onClick={onClose} className="flex-1 py-3 border border-black rounded-md hover:bg-gray-50 transition">Cancel</button>
           </div>
+
         </div>
       </div>
     </div>
