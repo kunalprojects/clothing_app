@@ -151,16 +151,18 @@ export default function AdminOrdersPage() {
               </Link>
               <h1 className="text-2xl font-bold">Orders Management</h1>
             </div>
-            <button className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition">
-              <Download size={20} />
-              Export
-            </button>
-            <button 
-              onClick={handleLogout}
-              className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
-            >
-              Logout
-            </button>
+            <div className="flex items-center gap-4">
+              <button className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition">
+                <Download size={20} />
+                Export
+              </button>
+              <button 
+                onClick={handleLogout}
+                className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -336,6 +338,7 @@ export default function AdminOrdersPage() {
             </div>
           </div>
         )}
+      </div>
       </div>
     </AdminAuthCheck>
   )

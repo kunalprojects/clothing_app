@@ -66,26 +66,27 @@ export default function AdminProductsPage() {
       <header className="bg-black text-white">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
               <Link href="/admin" className="hover:text-gray-300">
                 <ArrowLeft size={24} />
               </Link>
               <h1 className="text-2xl font-bold">Product Management</h1>
             </div>
             <div className="flex items-center gap-4">
-            <button
-              onClick={() => setShowAddModal(true)}
-              className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
-            >
-              <Plus size={20} />
-              Add New Product
-            </button>
-            <button
-              onClick={handleLogout}
-              className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
-            >
-              Logout
-            </button>
+              <button
+                onClick={() => setShowAddModal(true)}
+                className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
+              >
+                <Plus size={20} />
+                Add New Product
+              </button>
+              <button
+                onClick={handleLogout}
+                className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -245,7 +246,8 @@ export default function AdminProductsPage() {
           />
         )}
       </div>
-    </div>
+      </div>
+    </AdminAuthCheck>
   )
 }
 

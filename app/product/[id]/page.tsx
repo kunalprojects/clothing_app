@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, use } from 'react'
+import { useState, use, Suspense } from 'react'
 import Image from 'next/image'
 import { products, reviews as allReviews } from '@/lib/data'
 import { useStore } from '@/lib/store'
@@ -9,7 +9,7 @@ import { Heart, Share2, TruckIcon, RefreshCw, Shield, ChevronDown, ChevronUp } f
 import { ProductCard } from '@/components/ProductCard'
 import { toast } from 'react-hot-toast'
 
-export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+function ProductContent({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params)
   const product = products.find(p => p.id === resolvedParams.id)
   
@@ -336,5 +336,17 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         </div>
       )}
     </div>
+  )
+}
+
+export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-20 text-center">
+        <p>Loading product...</p>
+      </div>
+    }>
+      <ProductContent params={params} />
+    </Suspense>
   )
 }

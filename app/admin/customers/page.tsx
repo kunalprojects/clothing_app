@@ -101,18 +101,20 @@ export default function AdminCustomersPage() {
       {/* Admin Header */}
       <header className="bg-black text-white">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center gap-4">
-            <Link href="/admin" className="hover:text-gray-300">
-              <ArrowLeft size={24} />
-            </Link>
-            <h1 className="text-2xl font-bold">Customer Management</h1>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/admin" className="hover:text-gray-300">
+                <ArrowLeft size={24} />
+              </Link>
+              <h1 className="text-2xl font-bold">Customer Management</h1>
+            </div>
+            <button 
+              onClick={handleLogout}
+              className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
+            >
+              Logout
+            </button>
           </div>
-          <button 
-            onClick={handleLogout}
-            className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-100 transition"
-          >
-            Logout
-          </button>
         </div>
       </header>
 
@@ -294,6 +296,7 @@ export default function AdminCustomersPage() {
             </div>
           </div>
         )}
+      </div>
       </div>
     </AdminAuthCheck>
   )

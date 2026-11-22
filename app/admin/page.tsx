@@ -182,6 +182,7 @@ export default function AdminDashboard() {
           </div>
         </div>
       </div>
+      </div>
     </AdminAuthCheck>
   )
 }

@@ -1,11 +1,11 @@
 'use client'
 
-import { use } from 'react'
+import { use, Suspense } from 'react'
 import { products, collections } from '@/lib/data'
 import { ProductCard } from '@/components/ProductCard'
 import Image from 'next/image'
 
-export default function CollectionPage({ params }: { params: Promise<{ id: string }> }) {
+function CollectionContent({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params)
   const collection = collections.find(c => c.id === resolvedParams.id)
 
@@ -73,5 +73,17 @@ export default function CollectionPage({ params }: { params: Promise<{ id: strin
         )}
       </div>
     </div>
+  )
+}
+
+export default function CollectionPage({ params }: { params: Promise<{ id: string }> }) {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-20 text-center">
+        <p>Loading collection...</p>
+      </div>
+    }>
+      <CollectionContent params={params} />
+    </Suspense>
   )
 }
