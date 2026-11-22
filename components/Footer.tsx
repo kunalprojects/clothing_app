@@ -122,13 +122,13 @@ export function Footer() {
             <p className="text-sm text-gray-600 mb-4">
               Get 10% off your first order + early access to drops
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-col xs:flex-row gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               />
-              <button className="px-6 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition">
+              <button className="w-full xs:w-auto px-6 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -137,18 +137,12 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
+          <div className="flex flex-col items-center gap-3 text-sm text-gray-600 text-center">
             <p>&copy; 2024 VIBE. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link href="/policies/privacy" className="hover:text-black transition">
-                Privacy Policy
-              </Link>
-              <Link href="/policies/terms" className="hover:text-black transition">
-                Terms & Conditions
-              </Link>
-              <Link href="/policies/refund" className="hover:text-black transition">
-                Refund Policy
-              </Link>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+              <Link href="/policies/privacy" className="hover:text-black transition">Privacy Policy</Link>
+              <Link href="/policies/terms" className="hover:text-black transition">Terms & Conditions</Link>
+              <Link href="/policies/refund" className="hover:text-black transition">Refund Policy</Link>
             </div>
             <p>GSTIN: 27XXXXX1234X1ZY</p>
           </div>

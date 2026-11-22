@@ -51,7 +51,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       />
 
       {/* Modal */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl bg-white z-50 shadow-xl rounded-b-2xl max-h-[80vh] flex flex-col">
+      <div className="fixed top-0 left-0 right-0 sm:left-1/2 sm:-translate-x-1/2 w-full sm:max-w-3xl bg-white z-50 shadow-xl sm:rounded-b-2xl max-h-[85vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center gap-4 p-6 border-b border-gray-200">
           <Search size={24} className="text-gray-400" />

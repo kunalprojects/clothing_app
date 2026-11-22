@@ -2,7 +2,7 @@
 
 import { useState, use, Suspense } from 'react'
 import Image from 'next/image'
-import { products, reviews as allReviews } from '@/lib/data'
+import { reviews as allReviews } from '@/lib/data'
 import { useStore } from '@/lib/store'
 import { formatPrice } from '@/lib/utils'
 import { Heart, Share2, TruckIcon, RefreshCw, Shield, ChevronDown, ChevronUp } from 'lucide-react'
@@ -11,8 +11,9 @@ import { toast } from 'react-hot-toast'
 
 function ProductContent({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params)
-  const product = products.find(p => p.id === resolvedParams.id)
-  
+  const allProducts = useStore(state => state.products)
+  const product = allProducts.find(p => p.id === resolvedParams.id)
+
   const [selectedSize, setSelectedSize] = useState<string>('')
   const [selectedColor, setSelectedColor] = useState<string>('')
   const [showSizeChart, setShowSizeChart] = useState(false)
@@ -34,7 +35,7 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
     )
   }
 
-  const relatedProducts = products
+  const relatedProducts = allProducts
     .filter(p => p.category === product.category && p.id !== product.id)
     .slice(0, 4)
 
@@ -132,16 +133,15 @@ function ProductContent({ params }: { params: Promise<{ id: string }> }) {
 
           {!product.inStock && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
-              <p className="text-red-600 font-semibold">Out of Stock</p>
-              <button className="text-sm text-red-600 underline mt-1">
-                Notify me when available
-              </button>
+              <p className="text-red-600 font-bold">⛔ Out of Stock</p>
+              <p className="text-sm text-red-500 mt-1">This product is currently unavailable.</p>
             </div>
           )}
 
           {product.lowStock && product.inStock && (
             <div className="mb-6 p-4 bg-orange-50 border border-orange-200 rounded-md">
-              <p className="text-orange-600 font-semibold">Only a few left in stock!</p>
+              <p className="text-orange-600 font-bold">⚡ Only {product.inventory} left in stock!</p>
+              <p className="text-sm text-orange-500 mt-1">Order soon before it sells out.</p>
             </div>
           )}
 

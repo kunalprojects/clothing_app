@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ProductsLoader } from "@/components/ProductsLoader";
 import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
+        <ProductsLoader />
         <Header />
         <main className="min-h-screen">
           {children}

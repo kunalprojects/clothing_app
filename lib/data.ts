@@ -1,6 +1,13 @@
 import { Product } from './store'
 
-// Demo product data with placeholder images from Unsplash - T-SHIRTS ONLY
+function stock(inventory: number) {
+  return {
+    inventory,
+    inStock: inventory > 0,
+    lowStock: inventory > 0 && inventory <= 5,
+  }
+}
+
 export const products: Product[] = [
   {
     id: '1',
@@ -11,11 +18,12 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Black', 'White', 'Navy'],
-    inStock: true,
+    ...stock(10),
+    sold: 5,
     isNew: true,
     isBestSeller: true,
     rating: 4.8,
-    reviews: 156
+    reviews: 156,
   },
   {
     id: '2',
@@ -26,10 +34,11 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['White', 'Black', 'Grey'],
-    inStock: true,
+    ...stock(5),
+    sold: 8,
     isBestSeller: true,
     rating: 4.7,
-    reviews: 203
+    reviews: 203,
   },
   {
     id: '3',
@@ -39,10 +48,11 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Black', 'Charcoal'],
-    inStock: true,
+    ...stock(15),
+    sold: 3,
     isNew: true,
     rating: 4.9,
-    reviews: 142
+    reviews: 142,
   },
   {
     id: '4',
@@ -53,9 +63,10 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Navy-White', 'Red-White', 'Green-White'],
-    inStock: true,
+    ...stock(8),
+    sold: 12,
     rating: 4.6,
-    reviews: 89
+    reviews: 89,
   },
   {
     id: '5',
@@ -65,10 +76,11 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Olive', 'Navy', 'Black', 'White'],
-    inStock: true,
+    ...stock(20),
+    sold: 2,
     isBestSeller: true,
     rating: 4.8,
-    reviews: 267
+    reviews: 267,
   },
   {
     id: '6',
@@ -79,10 +91,11 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Beige', 'Sage', 'Dusty Pink'],
-    inStock: true,
+    ...stock(3),
+    sold: 15,
     isNew: true,
     rating: 4.9,
-    reviews: 178
+    reviews: 178,
   },
   {
     id: '7',
@@ -92,9 +105,10 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Black', 'White', 'Grey'],
-    inStock: true,
+    ...stock(12),
+    sold: 4,
     rating: 4.7,
-    reviews: 134
+    reviews: 134,
   },
   {
     id: '8',
@@ -105,11 +119,11 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Multi', 'Purple Mix', 'Blue Mix'],
-    inStock: true,
-    lowStock: true,
+    ...stock(2),
+    sold: 18,
     isNew: true,
     rating: 4.8,
-    reviews: 95
+    reviews: 95,
   },
   {
     id: '9',
@@ -119,10 +133,11 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['White', 'Black', 'Navy', 'Grey'],
-    inStock: true,
+    ...stock(18),
+    sold: 6,
     isBestSeller: true,
     rating: 4.6,
-    reviews: 312
+    reviews: 312,
   },
   {
     id: '10',
@@ -132,9 +147,10 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Black', 'White', 'Khaki'],
-    inStock: false,
+    ...stock(0),
+    sold: 10,
     rating: 4.7,
-    reviews: 156
+    reviews: 156,
   },
   {
     id: '11',
@@ -144,9 +160,10 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['White-Navy', 'White-Red', 'Grey-Black'],
-    inStock: true,
+    ...stock(14),
+    sold: 2,
     rating: 4.5,
-    reviews: 87
+    reviews: 87,
   },
   {
     id: '12',
@@ -157,12 +174,13 @@ export const products: Product[] = [
     category: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Sand', 'Charcoal', 'Olive'],
-    inStock: true,
+    ...stock(4),
+    sold: 14,
     isNew: true,
-    lowStock: true,
+    isBestSeller: true,
     rating: 4.9,
-    reviews: 124
-  }
+    reviews: 124,
+  },
 ]
 
 export const collections = [
@@ -170,26 +188,26 @@ export const collections = [
     id: 'new-arrivals',
     name: 'New Arrivals',
     description: 'Fresh tees just dropped',
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop'
+    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop',
   },
   {
     id: 'best-sellers',
     name: 'Best Sellers',
-    description: 'Everyone\'s favorite tees',
-    image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop'
+    description: "Everyone's favorite tees",
+    image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop',
   },
   {
     id: 'oversized',
     name: 'Oversized Fit',
     description: 'Relaxed & comfortable',
-    image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&h=600&fit=crop'
+    image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&h=600&fit=crop',
   },
   {
     id: 'graphic',
     name: 'Graphic Tees',
     description: 'Bold designs & prints',
-    image: 'https://images.unsplash.com/photo-1525450824786-227cbef70703?w=800&h=600&fit=crop'
-  }
+    image: 'https://images.unsplash.com/photo-1525450824786-227cbef70703?w=800&h=600&fit=crop',
+  },
 ]
 
 export const reviews = [
@@ -200,16 +218,16 @@ export const reviews = [
     comment: 'Obsessed with the quality! The fit is perfect and the fabric feels premium.',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
     verified: true,
-    productImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop'
+    productImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
   },
   {
     id: 2,
     name: 'Arjun M.',
     rating: 5,
-    comment: 'Finally found clothes that match my vibe. The oversized fit is *chef\'s kiss*',
+    comment: "Finally found clothes that match my vibe. The oversized fit is *chef's kiss*",
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
     verified: true,
-    productImage: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=200&h=200&fit=crop'
+    productImage: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=200&h=200&fit=crop',
   },
   {
     id: 3,
@@ -218,33 +236,33 @@ export const reviews = [
     comment: 'Love the casual-cool aesthetic! Got so many compliments 💫',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
     verified: true,
-    productImage: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=200&h=200&fit=crop'
-  }
+    productImage: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=200&h=200&fit=crop',
+  },
 ]
 
 export const faqs = [
   {
     question: 'What is your return policy?',
-    answer: 'We offer easy returns within 7 days of delivery. Items must be unworn with tags attached. Visit our Returns page to initiate a return request.'
+    answer: 'We offer easy returns within 7 days of delivery. Items must be unworn with tags attached.',
   },
   {
     question: 'How long does shipping take?',
-    answer: 'Orders are typically processed within 2-3 business days. Delivery takes 4-7 business days depending on your location in India.'
+    answer: 'Orders are processed in 2-3 business days. Delivery takes 4-7 business days across India.',
   },
   {
     question: 'Do you offer Cash on Delivery?',
-    answer: 'Yes! COD is available on select orders. You can choose this option at checkout.'
+    answer: 'Yes! COD is available on select orders. Choose this option at checkout.',
   },
   {
     question: 'How do I track my order?',
-    answer: 'Once your order ships, you\'ll receive an email with tracking details. You can also check your order status in My Account.'
+    answer: 'Once shipped, you will receive an email with tracking details. Check status in My Account.',
   },
   {
     question: 'What sizes do you offer?',
-    answer: 'We offer sizes from XS to XXL. Check our size chart on each product page for detailed measurements.'
+    answer: 'We offer sizes from XS to XXL. See the size chart on each product page.',
   },
   {
     question: 'Are the colors accurate to the photos?',
-    answer: 'We try our best to display accurate colors, but they may vary slightly due to screen settings. Check the product description for color details.'
-  }
+    answer: 'We display colors as accurately as possible, but they may vary slightly by screen.',
+  },
 ]

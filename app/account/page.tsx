@@ -65,65 +65,59 @@ export default function AccountPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">My Account</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8">My Account</h1>
 
-      <div className="grid lg:grid-cols-4 gap-8">
+      <div className="grid md:grid-cols-4 gap-6 lg:gap-8">
         {/* Sidebar */}
-        <aside className="lg:col-span-1">
-          <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+        <aside className="md:col-span-1">
+          <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
             {/* User Info */}
-            <div className="text-center pb-4 border-b border-gray-200">
-              <div className="w-20 h-20 bg-black text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3">
+            <div className="text-center pb-4 border-b border-gray-200 mb-4">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-black text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-3">
                 {user.name.charAt(0)}
               </div>
               <h2 className="font-semibold">{user.name}</h2>
-              <p className="text-sm text-gray-600">{user.email}</p>
+              <p className="text-sm text-gray-600 truncate">{user.email}</p>
             </div>
 
-            {/* Navigation */}
-            <nav className="space-y-2">
+            {/* Navigation — horizontal scroll on mobile, vertical on md+ */}
+            <nav className="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-1 md:pb-0">
               <button
                 onClick={() => setActiveTab('orders')}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-md transition ${
-                  activeTab === 'orders'
-                    ? 'bg-black text-white'
-                    : 'hover:bg-gray-200'
+                className={`flex-shrink-0 md:flex-shrink flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 rounded-md transition text-sm md:text-base whitespace-nowrap ${
+                  activeTab === 'orders' ? 'bg-black text-white' : 'hover:bg-gray-200'
                 }`}
               >
-                <Package size={20} />
+                <Package size={18} />
                 <span>My Orders</span>
               </button>
               <button
                 onClick={() => setActiveTab('addresses')}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-md transition ${
-                  activeTab === 'addresses'
-                    ? 'bg-black text-white'
-                    : 'hover:bg-gray-200'
+                className={`flex-shrink-0 md:flex-shrink flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 rounded-md transition text-sm md:text-base whitespace-nowrap ${
+                  activeTab === 'addresses' ? 'bg-black text-white' : 'hover:bg-gray-200'
                 }`}
               >
-                <MapPin size={20} />
+                <MapPin size={18} />
                 <span>Addresses</span>
               </button>
               <Link
                 href="/wishlist"
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-md hover:bg-gray-200 transition"
+                className="flex-shrink-0 md:flex-shrink flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 rounded-md hover:bg-gray-200 transition text-sm md:text-base whitespace-nowrap"
               >
-                <Heart size={20} />
+                <Heart size={18} />
                 <span>Wishlist</span>
               </Link>
               <button
                 onClick={() => setActiveTab('profile')}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-md transition ${
-                  activeTab === 'profile'
-                    ? 'bg-black text-white'
-                    : 'hover:bg-gray-200'
+                className={`flex-shrink-0 md:flex-shrink flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 rounded-md transition text-sm md:text-base whitespace-nowrap ${
+                  activeTab === 'profile' ? 'bg-black text-white' : 'hover:bg-gray-200'
                 }`}
               >
-                <User size={20} />
+                <User size={18} />
                 <span>Profile</span>
               </button>
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-md hover:bg-red-50 hover:text-red-600 transition">
-                <LogOut size={20} />
+              <button className="flex-shrink-0 md:flex-shrink flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 rounded-md hover:bg-red-50 hover:text-red-600 transition text-sm md:text-base whitespace-nowrap">
+                <LogOut size={18} />
                 <span>Logout</span>
               </button>
             </nav>
@@ -131,7 +125,7 @@ export default function AccountPage() {
         </aside>
 
         {/* Main Content */}
-        <div className="lg:col-span-3">
+        <div className="md:col-span-3">
           {/* Orders Tab */}
           {activeTab === 'orders' && (
             <div>

@@ -52,7 +52,7 @@ export default function AdminDashboard() {
 
       <div className="container mx-auto px-4 py-8">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-gray-600 text-sm font-semibold">Total Orders</h3>
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <Link
             href="/admin/products"
             className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition group"
@@ -139,9 +139,10 @@ export default function AdminDashboard() {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
-          <div className="space-y-4">
+          <div className="overflow-x-auto">
+          <div className="space-y-4 min-w-[480px]">
             {[
               { id: '#ORD-2024-248', customer: 'Rahul Sharma', amount: 1999, status: 'Pending', time: '10 mins ago' },
               { id: '#ORD-2024-247', customer: 'Priya Patel', amount: 2599, status: 'Processing', time: '1 hour ago' },
@@ -171,6 +172,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
           <div className="mt-6">
             <Link
